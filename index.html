@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jaisha 💖</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Floating Hearts -->
+<div class="hearts" id="hearts"></div>
+
+<!-- Background Music -->
+<audio id="bgMusic" autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- HERO -->
+<section class="hero">
+    <h1>Hey Jaisha 💕</h1>
+    <p id="typeText"></p>
+    <button onclick="scrollToSection('qualities')">Continue 💖</button>
+</section>
+
+<!-- QUALITIES -->
+<section id="qualities" class="qualities">
+    <h2>Why You Mean So Much To Me 🌸</h2>
+    <div class="cards">
+        <div class="card">Your smile makes my worst days better ✨</div>
+        <div class="card">You understand me without words 💗</div>
+        <div class="card">You make life feel lighter 🌷</div>
+        <div class="card">You’re my comfort and happiness 💞</div>
+    </div>
+</section>
+
+<!-- MESSAGE -->
+<section class="message">
+    <h2>A Little From My Heart 💌</h2>
+    <p>
+        Jaisha, you are my safe place, my favorite thought,  
+        and the reason I smile without trying.  
+        Every moment with you feels like home.
+    </p>
+
+    <p class="secret" onclick="revealSecret()">💗 Tap this heart</p>
+    <p id="secretMsg" class="hidden">
+        You are my today, my tomorrow, and my always 💖
+    </p>
+</section>
+
+<!-- COUNTDOWN -->
+<section class="countdown">
+    <h2>Counting Down To Valentine’s Day 💞</h2>
+    <div id="timer"></div>
+</section>
+
+<!-- VALENTINE QUESTION -->
+<section class="valentine">
+    <h1>Will You Be My Valentine? 💖</h1>
+    <div class="buttons">
+        <button class="yes" onclick="yesClicked()">YES 💕</button>
+        <button class="no" id="noBtn">NO 🙈</button>
+    </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
