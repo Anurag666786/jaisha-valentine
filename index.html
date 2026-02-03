@@ -3,35 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Jaisha 💖</title>
-
-    <!-- Mobile Optimization -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<!-- 🌌 Romantic Background (animated via CSS) -->
-<div class="stars"></div>
-
-<!-- ❤️ Floating Hearts Container -->
+<!-- Floating Hearts -->
 <div class="hearts" id="hearts"></div>
 
-<!-- 🎵 Background Music (plays AFTER YES) -->
-<audio id="bgMusic" loop>
+<!-- Background Music -->
+<audio id="bgMusic" autoplay loop>
     <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- 💖 HERO -->
+<!-- HERO -->
 <section class="hero">
     <h1>Hey Jaisha 💕</h1>
     <p id="typeText"></p>
     <button onclick="scrollToSection('qualities')">Continue 💖</button>
 </section>
 
-<!-- 🌸 QUALITIES -->
+<!-- QUALITIES -->
 <section id="qualities" class="qualities">
     <h2>Why You Mean So Much To Me 🌸</h2>
     <div class="cards">
@@ -42,12 +34,12 @@
     </div>
 </section>
 
-<!-- 💌 MESSAGE -->
+<!-- MESSAGE -->
 <section class="message">
     <h2>A Little From My Heart 💌</h2>
     <p>
-        Jaisha, you are my safe place, my favorite thought,<br>
-        and the reason I smile without trying.<br>
+        Jaisha, you are my safe place, my favorite thought,  
+        and the reason I smile without trying.  
         Every moment with you feels like home.
     </p>
 
@@ -57,25 +49,21 @@
     </p>
 </section>
 
-<!-- ⏳ COUNTDOWN -->
+<!-- COUNTDOWN -->
 <section class="countdown">
     <h2>Counting Down To Valentine’s Day 💞</h2>
     <div id="timer"></div>
 </section>
 
-<!-- 💍 VALENTINE QUESTION -->
+<!-- VALENTINE QUESTION -->
 <section class="valentine">
     <h1>Will You Be My Valentine? 💖</h1>
     <div class="buttons">
-        <button class="yes" id="yesBtn" onclick="yesClicked()">YES 💕</button>
+        <button class="yes" onclick="yesClicked()">YES 💕</button>
         <button class="no" id="noBtn">NO 🙈</button>
     </div>
 </section>
 
-<!-- 🎆 Fireworks Canvas (triggered after YES) -->
-<canvas id="fireworks"></canvas>
-
-<!-- Scripts -->
 <script src="script.js"></script>
 </body>
 </html>
