@@ -12,13 +12,29 @@ body {
     overflow-x: hidden;
 }
 
+/* 🌌 Romantic animated background */
+.stars {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(#ffffff55 1px, transparent 1px);
+    background-size: 3px 3px;
+    animation: moveStars 60s linear infinite;
+    z-index: 0;
+    opacity: 0.4;
+}
+
+@keyframes moveStars {
+    from { background-position: 0 0; }
+    to { background-position: 1000px 500px; }
+}
+
 section {
     padding: 80px 20px;
     position: relative;
     z-index: 1;
 }
 
-/* HERO */
+/* 💖 HERO */
 .hero {
     height: 100vh;
     display: flex;
@@ -33,16 +49,22 @@ section {
 
 .hero button {
     margin-top: 30px;
-    padding: 12px 30px;
+    padding: 14px 36px;
     font-size: 1.1rem;
     background: #ff4d88;
     color: white;
     border: none;
-    border-radius: 25px;
+    border-radius: 30px;
     cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 77, 136, 0.6);
+    transition: transform 0.3s;
 }
 
-/* QUALITIES */
+.hero button:hover {
+    transform: scale(1.1);
+}
+
+/* 🌸 QUALITIES */
 .qualities h2 {
     font-size: 2.5rem;
     margin-bottom: 40px;
@@ -58,11 +80,11 @@ section {
     background: white;
     padding: 25px;
     border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(255, 77, 136, 0.2);
+    box-shadow: 0 10px 20px rgba(255, 77, 136, 0.25);
     font-size: 1.1rem;
 }
 
-/* MESSAGE */
+/* 💌 MESSAGE */
 .message p {
     max-width: 700px;
     margin: 20px auto;
@@ -73,13 +95,14 @@ section {
 .secret {
     font-size: 2rem;
     cursor: pointer;
+    animation: pulse 1.5s infinite;
 }
 
 .hidden {
     display: none;
 }
 
-/* COUNTDOWN */
+/* ⏳ COUNTDOWN */
 .countdown h2 {
     font-size: 2.2rem;
     margin-bottom: 20px;
@@ -91,17 +114,21 @@ section {
     padding: 15px 30px;
     display: inline-block;
     border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(255, 77, 136, 0.2);
+    box-shadow: 0 10px 20px rgba(255, 77, 136, 0.25);
 }
 
-/* VALENTINE */
+/* 💍 VALENTINE */
 .valentine h1 {
     font-size: 3rem;
     margin-bottom: 40px;
 }
 
+.buttons {
+    position: relative;
+}
+
 .buttons button {
-    padding: 15px 35px;
+    padding: 16px 40px;
     font-size: 1.2rem;
     margin: 10px;
     border: none;
@@ -109,6 +136,16 @@ section {
     background: #ff1a75;
     color: white;
     cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.buttons button:hover {
+    transform: scale(1.1);
+}
+
+.yes {
+    animation: pulse 1.3s infinite;
+    box-shadow: 0 0 25px rgba(255, 26, 117, 0.8);
 }
 
 .no {
@@ -116,7 +153,7 @@ section {
     background: #ff99c2;
 }
 
-/* FLOATING HEARTS */
+/* ❤️ FLOATING HEARTS */
 .hearts {
     position: fixed;
     top: 0;
@@ -130,18 +167,49 @@ section {
 .heart {
     position: absolute;
     bottom: -20px;
-    animation: floatUp 6s linear infinite;
+    font-size: 24px;
+    animation: floatUp linear forwards;
     color: #ff4d88;
 }
 
 @keyframes floatUp {
-    0% {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-110vh) scale(1.5);
+    to {
+        transform: translateY(-120vh) scale(1.6);
         opacity: 0;
     }
 }
 
+/* 💓 Animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+/* 🎆 Fireworks Canvas */
+#fireworks {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* 📱 Mobile Optimization */
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 2.4rem;
+    }
+
+    .valentine h1 {
+        font-size: 2.2rem;
+    }
+
+    button {
+        width: 85%;
+        font-size: 1.1rem;
+    }
+
+    section {
+        padding: 60px 15px;
+    }
+}
