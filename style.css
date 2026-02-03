@@ -14,13 +14,17 @@ body {
 
 section {
     padding: 80px 20px;
+    position: relative;
+    z-index: 1;
 }
 
+/* HERO */
 .hero {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 40px 20px;
 }
 
 .hero h1 {
@@ -28,14 +32,26 @@ section {
     font-size: 4rem;
 }
 
+.hero p {
+    font-size: 1.3rem;
+    margin-top: 15px;
+}
+
 .hero button {
     margin-top: 30px;
-    padding: 14px 36px;
-    border-radius: 30px;
+    padding: 14px 34px;
+    font-size: 1.1rem;
     background: #ff4d88;
     color: white;
     border: none;
-    font-size: 1.2rem;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+/* QUALITIES */
+.qualities h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
 }
 
 .cards {
@@ -49,45 +65,114 @@ section {
     padding: 25px;
     border-radius: 20px;
     box-shadow: 0 10px 20px rgba(255, 77, 136, 0.2);
+    font-size: 1.1rem;
 }
 
-.buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
+/* MESSAGE */
+.message p {
+    max-width: 700px;
+    margin: 20px auto;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    padding: 0 10px;
+}
+
+.secret {
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+/* COUNTDOWN */
+.countdown h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+#timer {
+    font-size: 1.8rem;
+    background: white;
+    padding: 15px 30px;
+    display: inline-block;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(255, 77, 136, 0.2);
+}
+
+/* VALENTINE */
+.valentine h1 {
+    font-size: 3rem;
+    margin-bottom: 40px;
+}
+
+.buttons button {
+    padding: 16px 36px;
+    font-size: 1.2rem;
+    margin: 10px;
+    border: none;
+    border-radius: 30px;
+    background: #ff1a75;
+    color: white;
+    cursor: pointer;
 }
 
 .no {
-    position: fixed;
+    position: absolute;
     background: #ff99c2;
 }
 
+/* FLOATING HEARTS */
 .hearts {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
+    z-index: 0;
 }
 
 .heart {
     position: absolute;
     bottom: -20px;
     animation: floatUp 6s linear infinite;
+    color: #ff4d88;
 }
 
-@keyframes floatUp {
-    to {
-        transform: translateY(-110vh) scale(1.5);
-        opacity: 0;
+/* MOBILE OPTIMIZATION */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.6rem;
+    }
+
+    .qualities h2,
+    .valentine h1 {
+        font-size: 2rem;
+    }
+
+    .card {
+        font-size: 1rem;
+    }
+
+    #timer {
+        font-size: 1.4rem;
+        padding: 12px 20px;
+    }
+
+    section {
+        padding: 60px 15px;
     }
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
-    .hero h1 { font-size: 2.6rem; }
-    .buttons { flex-direction: column; }
-    .buttons button {
-        width: 85%;
-        max-width: 300px;
-        font-size: 1.3rem;
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
     }
 }
