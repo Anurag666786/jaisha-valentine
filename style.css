@@ -13,12 +13,14 @@ body {
 }
 
 section {
-    padding: 70px 20px;
+    padding: 80px 20px;
+    position: relative;
+    z-index: 1;
 }
 
 /* HERO */
 .hero {
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -26,44 +28,46 @@ section {
 
 .hero h1 {
     font-family: 'Pacifico', cursive;
-    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-size: 4rem;
 }
 
 .hero button {
-    margin-top: 25px;
-    padding: 14px 32px;
+    margin-top: 30px;
+    padding: 12px 30px;
     font-size: 1.1rem;
     background: #ff4d88;
     color: white;
     border: none;
-    border-radius: 30px;
+    border-radius: 25px;
+    cursor: pointer;
 }
 
 /* QUALITIES */
 .qualities h2 {
-    font-size: clamp(1.8rem, 5vw, 2.5rem);
-    margin-bottom: 30px;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
 }
 
 .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
 }
 
 .card {
     background: white;
-    padding: 22px;
-    border-radius: 18px;
+    padding: 25px;
+    border-radius: 20px;
     box-shadow: 0 10px 20px rgba(255, 77, 136, 0.2);
+    font-size: 1.1rem;
 }
 
 /* MESSAGE */
 .message p {
-    max-width: 720px;
+    max-width: 700px;
     margin: 20px auto;
-    font-size: 1.1rem;
-    line-height: 1.7;
+    font-size: 1.2rem;
+    line-height: 1.8;
 }
 
 .secret {
@@ -76,23 +80,35 @@ section {
 }
 
 /* COUNTDOWN */
+.countdown h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
 #timer {
-    font-size: 1.6rem;
-    padding: 14px 28px;
+    font-size: 1.8rem;
     background: white;
+    padding: 15px 30px;
+    display: inline-block;
     border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(255, 77, 136, 0.2);
 }
 
 /* VALENTINE */
 .valentine h1 {
-    font-size: clamp(2rem, 6vw, 3rem);
+    font-size: 3rem;
+    margin-bottom: 40px;
 }
 
 .buttons button {
-    padding: 14px 32px;
-    font-size: 1.1rem;
-    border-radius: 30px;
+    padding: 15px 35px;
+    font-size: 1.2rem;
     margin: 10px;
+    border: none;
+    border-radius: 30px;
+    background: #ff1a75;
+    color: white;
+    cursor: pointer;
 }
 
 .no {
@@ -103,7 +119,10 @@ section {
 /* FLOATING HEARTS */
 .hearts {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
     z-index: 0;
 }
@@ -116,19 +135,34 @@ section {
 }
 
 @keyframes floatUp {
-    to {
-        transform: translateY(-110vh) scale(1.4);
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh) scale(1.5);
         opacity: 0;
     }
 }
 
-/* FINAL SCREEN */
-.final {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(to bottom, #ffb3d9, #fff);
-    font-family: 'Pacifico', cursive;
+/* MOBILE OPTIMIZATION */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.6rem;
+    }
+
+    .qualities h2,
+    .countdown h2,
+    .valentine h1 {
+        font-size: 2rem;
+    }
+
+    .message p {
+        font-size: 1.05rem;
+    }
+
+    .buttons button {
+        width: 80%;
+        max-width: 280px;
+    }
 }
