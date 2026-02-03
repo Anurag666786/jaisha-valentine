@@ -1,25 +1,60 @@
-/* VALENTINE */
-.valentine h1 {
-    font-size: 3rem;
-    margin-bottom: 40px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(to bottom, #ffe6f0, #fff);
+    color: #b30059;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+section {
+    padding: 80px 20px;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 4rem;
+}
+
+.hero button {
+    margin-top: 30px;
+    padding: 14px 36px;
+    border-radius: 30px;
+    background: #ff4d88;
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(255, 77, 136, 0.2);
 }
 
 .buttons {
     display: flex;
-    justify-content: center;
     gap: 20px;
-    position: relative;
-}
-
-.buttons button {
-    padding: 16px 36px;
-    font-size: 1.2rem;
-    border: none;
-    border-radius: 30px;
-    background: #ff1a75;
-    color: white;
-    cursor: pointer;
-    touch-action: manipulation;
+    justify-content: center;
 }
 
 .no {
@@ -27,13 +62,29 @@
     background: #ff99c2;
 }
 
-/* MOBILE OPTIMIZATION */
-@media (max-width: 768px) {
-    .buttons {
-        flex-direction: column;
-        align-items: center;
-    }
+.hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+}
 
+.heart {
+    position: absolute;
+    bottom: -20px;
+    animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.6rem; }
+    .buttons { flex-direction: column; }
     .buttons button {
         width: 85%;
         max-width: 300px;
