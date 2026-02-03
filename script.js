@@ -1,4 +1,15 @@
-/* TYPEWRITER TEXT */
+/* 🎵 BACKGROUND MUSIC (Mobile + Desktop Safe) */
+const bgMusic = document.getElementById("bgMusic");
+let musicStarted = false;
+
+function startMusic() {
+    if (!musicStarted) {
+        bgMusic.play().catch(() => {});
+        musicStarted = true;
+    }
+}
+
+/* TYPEWRITER */
 const text = "From the moment you came into my life, everything changed 💕";
 let index = 0;
 
@@ -13,22 +24,25 @@ typeEffect();
 
 /* SMOOTH SCROLL */
 function scrollToSection(id) {
+    startMusic();
     document.getElementById(id).scrollIntoView({ behavior: "smooth" });
 }
 
-/* FLOATING HEARTS */
+/* FLOATING HEARTS (Mobile optimized) */
 const heartsContainer = document.getElementById("hearts");
 
 setInterval(() => {
+    if (window.innerWidth < 768 && Math.random() > 0.6) return;
+
     const heart = document.createElement("div");
-    heart.classList.add("heart");
+    heart.className = "heart";
     heart.innerText = "💖";
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    heart.style.fontSize = Math.random() * 14 + 14 + "px";
     heartsContainer.appendChild(heart);
 
     setTimeout(() => heart.remove(), 6000);
-}, 300);
+}, 400);
 
 /* SECRET MESSAGE */
 function revealSecret() {
@@ -39,72 +53,61 @@ function revealSecret() {
 const valentineDate = new Date("February 14, 2026 00:00:00").getTime();
 
 setInterval(() => {
-    const now = new Date().getTime();
-    const distance = valentineDate - now;
+    const now = Date.now();
+    const diff = valentineDate - now;
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const m = Math.floor((diff / (1000 * 60)) % 60);
+    const s = Math.floor((diff / 1000) % 60);
 
-    document.getElementById("timer").innerHTML =
-        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    document.getElementById("timer").innerText =
+        `${d}d ${h}h ${m}m ${s}s`;
 }, 1000);
 
-/* NO BUTTON RUN */
+/* NO BUTTON RUN (Touch + Mouse Safe) */
 const noBtn = document.getElementById("noBtn");
 
-noBtn.addEventListener("mouseover", () => {
-    const x = Math.random() * (window.innerWidth - 120);
-    const y = Math.random() * (window.innerHeight - 60);
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
-});
+function moveNoButton() {
+    const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+    const maxY = window.innerHeight - noBtn.offsetHeight - 20;
 
-/* YES CLICK FIREWORKS */
+    noBtn.style.left = Math.random() * maxX + "px";
+    noBtn.style.top = Math.random() * maxY + "px";
+}
+
+noBtn.addEventListener("mouseover", moveNoButton);
+noBtn.addEventListener("touchstart", moveNoButton);
+
+/* YES CLICK EFFECT */
 function yesClicked() {
-    for (let i = 0; i < 50; i++) {
+    startMusic();
+
+    for (let i = 0; i < 40; i++) {
         const heart = document.createElement("div");
         heart.innerText = "💖";
         heart.style.position = "fixed";
         heart.style.left = "50%";
         heart.style.top = "50%";
-        heart.style.fontSize = "24px";
+        heart.style.fontSize = "22px";
         document.body.appendChild(heart);
 
-        const angle = Math.random() * 2 * Math.PI;
-        const distance = Math.random() * 200;
+        const angle = Math.random() * Math.PI * 2;
+        const dist = Math.random() * 180;
 
         heart.animate([
             { transform: "translate(0,0)", opacity: 1 },
-            {
-                transform: `translate(${Math.cos(angle)*distance}px, ${Math.sin(angle)*distance}px)`,
-                opacity: 0
-            }
-        ], { duration: 1500 });
+            { transform: `translate(${Math.cos(angle)*dist}px, ${Math.sin(angle)*dist}px)`, opacity: 0 }
+        ], { duration: 1200 });
 
-        setTimeout(() => heart.remove(), 1500);
+        setTimeout(() => heart.remove(), 1200);
     }
 
     setTimeout(() => {
         document.body.innerHTML = `
-        <div style="
-            height:100vh;
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            align-items:center;
-            background:linear-gradient(to bottom, #ffb3d9, #fff);
-            font-family:'Pacifico', cursive;
-            color:#b30059;
-            text-align:center;
-        ">
-            <h1>She Said YES 💖</h1>
-            <p style="font-size:1.6rem;margin-top:20px;">
-                Happy Valentine’s Day, Jaisha 🌹<br>
-                I choose you. Always.
-            </p>
-        </div>
-        `;
-    }, 1600);
+        <div class="final">
+            <h1>Puupu Said YES 💖</h1>
+            <p>Happy Valentine’s Day Jaisha 🌹<br>I choose you. Always.</p>
+        </div>`;
+    }, 1300);
 }
