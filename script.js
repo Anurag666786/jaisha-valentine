@@ -63,14 +63,21 @@ setInterval(() => {
         `${days}d ${hours}h ${minutes}m ${seconds}s`;
 }, 1000);
 
-/* NO BUTTON RUN */
+/* NO BUTTON MOVE ON CLICK – STAYS INSIDE SCREEN */
 const noBtn = document.getElementById("noBtn");
 
-noBtn.addEventListener("mouseover", () => {
-    const x = Math.random() * (window.innerWidth - 120);
-    const y = Math.random() * (window.innerHeight - 60);
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
+noBtn.addEventListener("click", () => {
+    const btnWidth = noBtn.offsetWidth;
+    const btnHeight = noBtn.offsetHeight;
+
+    const maxX = window.innerWidth - btnWidth - 20;
+    const maxY = window.innerHeight - btnHeight - 20;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.left = `${x}px`;
+    noBtn.style.top = `${y}px`;
 });
 
 /* YES CLICK FIREWORKS */
