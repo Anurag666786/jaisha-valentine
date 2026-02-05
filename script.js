@@ -75,10 +75,8 @@ function moveNoButton() {
 noBtn.addEventListener("mouseover", moveNoButton);
 noBtn.addEventListener("touchstart", moveNoButton);
 
-/* ❤️ YES CLICKED — MUSIC NEVER STOPS */
+/* ❤️ YES CLICKED */
 function yesClicked() {
-
-    // Heart burst
     for (let i = 0; i < 50; i++) {
         const heart = document.createElement("div");
         heart.innerText = "💖";
@@ -103,7 +101,6 @@ function yesClicked() {
         setTimeout(() => heart.remove(), 1500);
     }
 
-    // Overlay screen (NO DOM WIPE)
     setTimeout(() => {
         const overlay = document.createElement("div");
         overlay.style.position = "fixed";
@@ -130,3 +127,26 @@ function yesClicked() {
         document.body.appendChild(overlay);
     }, 1600);
 }
+
+/* 💭 MEMORIES BACKGROUND */
+const memoriesBg = document.getElementById("memoriesBg");
+const totalMemories = 10;
+let memoryIndex = 1;
+
+function spawnMemory() {
+    const mem = document.createElement("div");
+    mem.className = "memory";
+    mem.style.backgroundImage = `url(memories/${memoryIndex}.jpg)`;
+
+    mem.style.top = Math.random() * 70 + "vh";
+    mem.style.left = Math.random() * 70 + "vw";
+
+    memoriesBg.appendChild(mem);
+
+    setTimeout(() => mem.remove(), 10000);
+
+    memoryIndex++;
+    if (memoryIndex > totalMemories) memoryIndex = 1;
+}
+
+setInterval(spawnMemory, 2500);

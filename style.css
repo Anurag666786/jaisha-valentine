@@ -18,7 +18,36 @@ section {
     z-index: 1;
 }
 
-/* 🔇 INVISIBLE TAP LAYER (MOBILE AUDIO FIX) */
+/* 💭 MEMORIES BACKGROUND */
+.memories-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.memory {
+    position: absolute;
+    width: 45vw;
+    height: 45vw;
+    max-width: 320px;
+    max-height: 320px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    opacity: 0;
+    filter: blur(1px) brightness(0.9);
+    animation: fadeMemory 10s linear forwards;
+}
+
+@keyframes fadeMemory {
+    0% { opacity: 0; transform: scale(1); }
+    20% { opacity: 0.25; }
+    80% { opacity: 0.25; }
+    100% { opacity: 0; transform: scale(1.05); }
+}
+
+/* 🔇 INVISIBLE TAP LAYER */
 #tapToStart {
     position: fixed;
     inset: 0;
@@ -172,16 +201,14 @@ section {
     section {
         padding: 60px 15px;
     }
+
+    .memory {
+        width: 70vw;
+        height: 70vw;
+    }
 }
 
 @keyframes floatUp {
-    0% {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-110vh) scale(1.5);
-        opacity: 0;
-    }
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-110vh); opacity: 0; }
 }
-
