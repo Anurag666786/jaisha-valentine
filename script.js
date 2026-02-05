@@ -10,24 +10,22 @@ function typeEffect() {
 }
 typeEffect();
 
-/* 🎵 MOBILE + DESKTOP AUDIO FIX */
+/* 🔐 HARD MOBILE AUDIO UNLOCK */
 const bgMusic = document.getElementById("bgMusic");
-let unlocked = false;
+const tapLayer = document.getElementById("tapToStart");
 
-function unlockAudio() {
-    if (!unlocked) {
-        bgMusic.muted = false;
-        bgMusic.play().catch(() => {});
-        unlocked = true;
+tapLayer.addEventListener("click", () => {
+    bgMusic.play().then(() => {
+        tapLayer.remove();
+    }).catch(() => {});
+});
 
-        document.removeEventListener("touchstart", unlockAudio);
-        document.removeEventListener("click", unlockAudio);
-    }
-}
-
-/* Works on ALL mobile browsers */
-document.addEventListener("touchstart", unlockAudio, { passive: true });
-document.addEventListener("click", unlockAudio);
+/* also support touch explicitly */
+tapLayer.addEventListener("touchstart", () => {
+    bgMusic.play().then(() => {
+        tapLayer.remove();
+    }).catch(() => {});
+});
 
 function scrollToSection(id) {
     document.getElementById(id).scrollIntoView({ behavior: "smooth" });

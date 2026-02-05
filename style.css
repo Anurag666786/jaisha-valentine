@@ -18,6 +18,14 @@ section {
     z-index: 1;
 }
 
+/* 🔇 INVISIBLE TAP LAYER (MOBILE AUDIO FIX) */
+#tapToStart {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: transparent;
+}
+
 /* HERO */
 .hero {
     height: 100vh;
