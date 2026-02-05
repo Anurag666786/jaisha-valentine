@@ -10,6 +10,23 @@ function typeEffect() {
 }
 typeEffect();
 
+/* 🎵 MUSIC FIX (GitHub Pages compatible) */
+const bgMusic = document.getElementById("bgMusic");
+let musicStarted = false;
+
+function startMusic() {
+    if (!musicStarted) {
+        bgMusic.play().catch(() => {});
+        musicStarted = true;
+        document.removeEventListener("click", startMusic);
+        document.removeEventListener("touchstart", startMusic);
+    }
+}
+
+/* Start music on first user interaction */
+document.addEventListener("click", startMusic);
+document.addEventListener("touchstart", startMusic);
+
 function scrollToSection(id) {
     document.getElementById(id).scrollIntoView({ behavior: "smooth" });
 }
@@ -48,7 +65,6 @@ setInterval(() => {
 
 const noBtn = document.getElementById("noBtn");
 
-/* WORKS FOR BOTH MOUSE + TOUCH */
 function moveNoButton() {
     const x = Math.random() * (window.innerWidth - 120);
     const y = Math.random() * (window.innerHeight - 60);
