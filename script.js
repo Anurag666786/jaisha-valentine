@@ -10,27 +10,25 @@ function typeEffect() {
 }
 typeEffect();
 
-/* 🔐 HARD MOBILE AUDIO UNLOCK */
+/* 🔐 MOBILE AUDIO UNLOCK */
 const bgMusic = document.getElementById("bgMusic");
 const tapLayer = document.getElementById("tapToStart");
 
-tapLayer.addEventListener("click", () => {
+function startMusic() {
+    bgMusic.loop = true;
     bgMusic.play().then(() => {
         tapLayer.remove();
     }).catch(() => {});
-});
+}
 
-/* also support touch explicitly */
-tapLayer.addEventListener("touchstart", () => {
-    bgMusic.play().then(() => {
-        tapLayer.remove();
-    }).catch(() => {});
-});
+tapLayer.addEventListener("click", startMusic);
+tapLayer.addEventListener("touchstart", startMusic, { passive: true });
 
 function scrollToSection(id) {
     document.getElementById(id).scrollIntoView({ behavior: "smooth" });
 }
 
+/* FLOATING HEARTS */
 const heartsContainer = document.getElementById("hearts");
 
 setInterval(() => {
@@ -48,6 +46,7 @@ function revealSecret() {
     document.getElementById("secretMsg").style.display = "block";
 }
 
+/* COUNTDOWN */
 const valentineDate = new Date("February 14, 2026 00:00:00").getTime();
 
 setInterval(() => {
@@ -63,6 +62,7 @@ setInterval(() => {
         `${days}d ${hours}h ${minutes}m ${seconds}s`;
 }, 1000);
 
+/* NO BUTTON ESCAPE */
 const noBtn = document.getElementById("noBtn");
 
 function moveNoButton() {
@@ -75,7 +75,10 @@ function moveNoButton() {
 noBtn.addEventListener("mouseover", moveNoButton);
 noBtn.addEventListener("touchstart", moveNoButton);
 
+/* ❤️ YES CLICKED — MUSIC NEVER STOPS */
 function yesClicked() {
+
+    // Heart burst
     for (let i = 0; i < 50; i++) {
         const heart = document.createElement("div");
         heart.innerText = "💖";
@@ -83,6 +86,7 @@ function yesClicked() {
         heart.style.left = "50%";
         heart.style.top = "50%";
         heart.style.fontSize = "24px";
+        heart.style.zIndex = "9999";
         document.body.appendChild(heart);
 
         const angle = Math.random() * 2 * Math.PI;
@@ -91,7 +95,7 @@ function yesClicked() {
         heart.animate([
             { transform: "translate(0,0)", opacity: 1 },
             {
-                transform: `translate(${Math.cos(angle)*distance}px, ${Math.sin(angle)*distance}px)`,
+                transform: `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px)`,
                 opacity: 0
             }
         ], { duration: 1500 });
@@ -99,26 +103,30 @@ function yesClicked() {
         setTimeout(() => heart.remove(), 1500);
     }
 
+    // Overlay screen (NO DOM WIPE)
     setTimeout(() => {
-        document.body.innerHTML = `
-        <div style="
-            height:100vh;
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            align-items:center;
-            background:linear-gradient(to bottom, #ffb3d9, #fff);
-            font-family:'Pacifico', cursive;
-            color:#b30059;
-            text-align:center;
-            padding:20px;
-        ">
+        const overlay = document.createElement("div");
+        overlay.style.position = "fixed";
+        overlay.style.inset = "0";
+        overlay.style.zIndex = "9998";
+        overlay.style.display = "flex";
+        overlay.style.flexDirection = "column";
+        overlay.style.justifyContent = "center";
+        overlay.style.alignItems = "center";
+        overlay.style.background = "linear-gradient(to bottom, #ffb3d9, #fff)";
+        overlay.style.fontFamily = "'Pacifico', cursive";
+        overlay.style.color = "#b30059";
+        overlay.style.textAlign = "center";
+        overlay.style.padding = "20px";
+
+        overlay.innerHTML = `
             <h1>Puupu Said YES 💖</h1>
             <p style="font-size:1.4rem;margin-top:20px;">
                 Happy Valentine’s Day, Jaisha 🌹<br>
                 I choose you. Always.
             </p>
-        </div>
         `;
+
+        document.body.appendChild(overlay);
     }, 1600);
 }
