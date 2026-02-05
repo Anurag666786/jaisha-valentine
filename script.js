@@ -10,22 +10,24 @@ function typeEffect() {
 }
 typeEffect();
 
-/* 🎵 MUSIC FIX (GitHub Pages compatible) */
+/* 🎵 MOBILE + DESKTOP AUDIO FIX */
 const bgMusic = document.getElementById("bgMusic");
-let musicStarted = false;
+let unlocked = false;
 
-function startMusic() {
-    if (!musicStarted) {
+function unlockAudio() {
+    if (!unlocked) {
+        bgMusic.muted = false;
         bgMusic.play().catch(() => {});
-        musicStarted = true;
-        document.removeEventListener("click", startMusic);
-        document.removeEventListener("touchstart", startMusic);
+        unlocked = true;
+
+        document.removeEventListener("touchstart", unlockAudio);
+        document.removeEventListener("click", unlockAudio);
     }
 }
 
-/* Start music on first user interaction */
-document.addEventListener("click", startMusic);
-document.addEventListener("touchstart", startMusic);
+/* Works on ALL mobile browsers */
+document.addEventListener("touchstart", unlockAudio, { passive: true });
+document.addEventListener("click", unlockAudio);
 
 function scrollToSection(id) {
     document.getElementById(id).scrollIntoView({ behavior: "smooth" });
