@@ -123,7 +123,7 @@ function yesClicked() {
             <h1>Puupu Said YES 💖</h1>
             <p style="font-size:1.4rem;margin-top:20px;">
                 Happy Valentine’s Day, Jaisha 🌹<br>
-                I choose you. Always.
+                I choose you today, tomorrow and always😘
             </p>
         `;
 
