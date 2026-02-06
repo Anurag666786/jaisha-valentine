@@ -42,8 +42,8 @@ section {
 
 @keyframes fadeMemory {
     0% { opacity: 0; transform: scale(1); }
-    20% { opacity: 0.25; }
-    80% { opacity: 0.25; }
+    20% { opacity: 0.50; }
+    80% { opacity: 0.50; }
     100% { opacity: 0; transform: scale(1.05); }
 }
 
